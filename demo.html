@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 WebSocket Audio</title>
+</head>
+
+<body>
+
+    <p>
+        <audio id="audio" autoplay="autoplay" controls="controls"></audio>
+    </p>
+
+    <p>Current: <span id="position"></span></p>
+    <p>Live: <span id="live"></span></p>
+    <p>Diff: <span id="diff"></span></p>
+
+    <script type="text/javascript" src="dist/wsaudio.js"></script>
+
+    <script type="text/javascript">
+
+        var wsAudio = new WsAudio(document.getElementById('audio'), 'ws://localhost:5001/stream', 'dist/worker.js');
+
+        wsAudio.onUpdate = function(currentTime, bufferedTime) {
+
+            document.getElementById('position').innerText = currentTime.toString();
+            document.getElementById('live').innerText = bufferedTime.toString();
+            document.getElementById('diff').innerText = (bufferedTime - currentTime).toString();
+
+        };
+
+    </script>
+
+</body>
+
+</html>
