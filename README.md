@@ -22,4 +22,4 @@ var wsAudio = new WsAudio(document.getElementById('audio'), 'ws://localhost:5001
 </script>
 ```
 
-See [demo.html](blob/master/demo.html) for an example.
+See [demo.html](demo.html) for an example.
